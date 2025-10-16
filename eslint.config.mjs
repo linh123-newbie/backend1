@@ -3,8 +3,10 @@ import globals from "globals";
 import pluginVue from "eslint-plugin-vue";
 import { defineConfig } from "eslint/config";
 
-export default defineConfig([
+export default defineConfig(
+  [
+ 
   { files: ["**/*.{js,mjs,cjs,vue}"], plugins: { js }, extends: ["js/recommended"], languageOptions: { globals: globals.browser } },
-  { files: ["**/*.js"], languageOptions: { sourceType: "commonjs" } },
+  { files: ["**/*.js"], languageOptions: { globals:{...globals.node}, sourceType: "commonjs" } },
   pluginVue.configs["flat/essential"],
 ]);
